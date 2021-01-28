@@ -1,7 +1,7 @@
 class DailynewsController < ApplicationController
 
   def show
-    @news_to_show = News.find(params[:id])
+    @news = News.find(params[:id])
   end
 
   def index
@@ -12,6 +12,10 @@ class DailynewsController < ApplicationController
   end
 
   def create
-    render plain: params[:news]
+    @news_add = News.new(params.require(:news).permit(:headline, :information))
+    # render plain: @news_add.inspect
+    @news_add.save 
+    redirect_to dailynews_path(@news_add)
   end
+
 end
