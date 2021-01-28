@@ -1,8 +1,11 @@
 class NewsController < ApplicationController
 
   def show
-    byebug
     @news = News.find(params[:id])
+  end
+
+  def index
+    @all_news = News.all
   end
 
 end
