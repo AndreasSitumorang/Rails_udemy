@@ -1,27 +1,3 @@
 <h1>Edit article</h1>
 
-<% if @news.errors.any? %>
-  <h2>The following errors prevented the article from being saved</h2>
-  <ul>
-    <% @news.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%  %>
-<%= form_with(model: @dailynews, url: dailynews_path(@news.id), method: "patch", local: true) do |f| %>
-
-  <p> 
-    <%= f.label :headline %><br/> 
-    <%= f.text_field :headline %>
-  </p>
-  <p>
-    <%= f.label :information %><br/> 
-    <%= f.text_area :information %> 
-  </p>
-  <p>
-    <%= f.submit "Edit News" %> 
-  </p>
-
-<% end %>
+<%= render 'form' %>
