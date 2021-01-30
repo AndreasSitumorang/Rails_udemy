@@ -1,7 +1,9 @@
 class DailynewsController < ApplicationController
 
   def show
+    # byebug
     @news = News.find(params[:id])
+    # redirect_to dailynews_path
   end
 
   def index
@@ -42,6 +44,13 @@ class DailynewsController < ApplicationController
       render 'edit'
     end  
 
+  end
+
+  def destroy
+     @news = News.find(params[:id])
+     # byebug
+     @news.destroy
+     redirect_to dailynews_index_path
   end
 
 end

@@ -14,8 +14,16 @@
     <tr>
       <td><%= news.headline %></td>
       <td><%= news.information %></td>
-      <td colspan="3">edit delete show </td>
+        
+      <td><%= button_to 'Show', dailynews_path(news), method: :get, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= button_to 'Edit', edit_dailynews_path(news), method: :get %></td>
+      <td><%= button_to 'Delete', dailynews_path(news), method: :delete, data: { confirm: "Are you sure?"} %></td>
     </tr>
-    <% end %>
+    <% end %> 
   </tbody>
 </table>
+
+
+<p>
+  <h2><%= link_to 'Create', new_dailynews_path(@all_news) %></h2>
+</p>
