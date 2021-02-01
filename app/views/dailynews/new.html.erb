@@ -1,24 +1,31 @@
-<h1>Create a new News</h1>
- 
-<% if @news.errors.any? %>
-  <h2>The following errors prevented the article from being saved </h2>
-  <ul>
-    <% @news.errors.full_messages.each do |msg| %>
-      <li> <%= msg %> </li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="body-wrap boxed-container">
+  <div class="container">
+    <h1 style="text-align:center">Create a new News</h1>
+      <% if @news.errors.any? %>
+        <h2>The following errors prevented the article from being saved </h2>
+        <ul>
+          <% @news.errors.full_messages.each do |msg| %>
+            <li> <%= msg %> </li>
+          <% end %>
+        </ul>
+      <% end %>
+  </div>
+    <div class="container">
+      <%= form_with scope: :news, url: "/dailynews", local: true do |f| %>
+        <p> 
+          <%= f.label :headline %><br/> 
+          <%= f.text_field :headline %>
+        </p>
+        <p>
+          <%= f.label :information %>  <br/> 
+          <%= f.text_area :information %> 
+        </p>
+        <p>
+        <%= f.submit "Post the News" %> 
+        </p>
+      <% end %>
+  </div>
+</div>
 
-<%= form_with scope: :news, url: "/dailynews", local: true do |f| %>
-  <p> 
-    <%= f.label :headline %><br/> 
-    <%= f.text_field :headline %>
-  </p>
-  <p>
-    <%= f.label :information %><br/> 
-    <%= f.text_area :information %> 
-  </p>
-  <p>
-    <%= f.submit "create" %> 
-  </p>
-<% end %>
+
+<%= render 'footer' %>

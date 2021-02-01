@@ -1,19 +1,20 @@
-<h1>News for Today</h1>
 
-<table>
+<div class="body-wrap boxed-container">
+<h1 style="text-align:left">List of News</h1>
+  <table class="table table-sm">
   <thead>
     <tr>
       <th>Headline</th>
       <th>Information</th>
-      <th colspan="3"> Action</th>
+      <th colspan="3" class="text-center"> Action</th>
     </tr>
   </thead>
 
   <tbody>
     <% @all_news.each do |news| %>
     <tr>
-      <td><%= news.headline %></td>
-      <td><%= news.information %></td>
+      <td style="text-align:left"><%= news.headline %></td>
+      <td style="text-align:left"><%= news.information %></td>
         
       <td><%= button_to 'Show', dailynews_path(news), method: :get, data: { confirm: 'Are you sure?' } %></td>
       <td><%= button_to 'Edit', edit_dailynews_path(news), method: :get %></td>
@@ -21,9 +22,12 @@
     </tr>
     <% end %> 
   </tbody>
-</table>
+  </table>
 
 
-<p>
-  <h2><%= link_to 'Create', new_dailynews_path(@all_news) %></h2>
-</p>
+  <h2 style="text-align:left"><%= link_to 'Create', new_dailynews_path(@all_news) %></h>
+ 
+</div>
+
+
+<%= render 'footer' %>

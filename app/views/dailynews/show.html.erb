@@ -1,17 +1,18 @@
-<h1>Showing article details </h1>
+<div class="body-wrap boxed-container">
 
-<p><strong>id:  <%= @news.id %> </strong> </p>
+  <h1 style="text-align:center" ><strong><%= @news.headline %> </strong> </h2>
 
-<p><strong>title:  <%= @news.headline %> </strong> </p>
+  <h3 style="text-align:center"><strong><%= @news.information %></strong> </h3>
 
-<p><strong>Information:  <%= @news.information %></strong> </p>
 
- 
-<p>
-  <%= button_to 'Edit', edit_dailynews_path(@news), method: :get %>
-  <%= button_to 'Delete', dailynews_path(@news), method: :delete %>
-  <%= button_to 'Dashbord', dailynews_index_path(@news), method: :get %>  
-</p>
- 
+  
+  <div class="hero-cta">
+    <%= button_to 'Edit', edit_dailynews_path(@news), method: :get %>
+    <%= button_to 'Delete', dailynews_path(@news), method: :delete %>
+    <%= button_to 'Dashbord', dailynews_index_path(@news), method: :get %>  
+  </div>
 
- 
+
+</div>
+
+<%= render 'footer' %>
