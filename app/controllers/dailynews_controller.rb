@@ -32,12 +32,13 @@ class DailynewsController < ApplicationController
   end
 
   def update
-    
+    # byebug
     # @news = News.find(params[:id])
     @new = params
     # render plain: @new.inspect
-    if @news.update(params.permit(:headline, :information))
-      flash[:notice] = "Berita telah di buat" 
+    # if @news.update(params.require(:news).permit(:headline, :information))
+    if @news.update(news_params)
+      flash[:notice] = "Berita telah di update" 
       redirect_to dailynews_path(@news)
     else
       render 'edit'
@@ -46,8 +47,7 @@ class DailynewsController < ApplicationController
   end
 
   def destroy
-     # @news = News.find(params[:id])
-     # byebug
+     # @news = News.find(params[:id])  
      @news.destroy
      redirect_to dailynews_index_path
   end
