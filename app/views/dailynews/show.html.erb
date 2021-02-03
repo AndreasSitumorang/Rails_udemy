@@ -15,21 +15,40 @@
 
 </head> 
 
-<div id="page-content">
-  <div class="container">
+< <div id="page-content">
     <div class="body-wrap boxed-container">
+      <div class="container">
+      <h1 style="text-align:left" class="mt-4">List of News</h1>
+        <div class="d-flex justify-content-center">
+          <div class="col-8">
+            <div class="shadow p-3 mb-5 bg-white rounded">
+              <div class="card">
+                <div class="card-header">
+                  <p class="fst-italic text-muted">Current User</p>
+                </div>
+                <div class="card-body">
+                  <h5 class="fs-2 text-success"><%= @news.headline %></h5>
+                  <p class="fs-4"><%= simple_format(@news.information, length:100) %></p>
 
-      <h1 style="text-align:center" ><strong><%= @news.headline %> </strong> </h1>
+                    <div class="btn-group gap-1" role="group" aria-label="Basic outlined example">
+                      <%= button_to 'Edit', edit_dailynews_path(@news), class: "btn btn-outline-info", method: :get %>
+                      <%= button_to 'Delete', dailynews_path(@news), class: "btn btn-outline-dark", method: :delete, data: { confirm: "Are you sure?"} %>
+                    </div>
 
-      <h3 style="text-align:center"><strong><%= @news.information %></strong> </h3>
+                </div>
+                <div class="card-footer text-muted">
+                    <small> 
+                      Create at <%= time_ago_in_words(@news.created_at) %> and Edit at
+                      <%= time_ago_in_words(@news.updated_at) %></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-
-      
-      <div class="hero-cta">
-        <%= button_to 'Edit', edit_dailynews_path(@news), method: :get %>
-        <%= button_to 'Delete', dailynews_path(@news), method: :delete %>
-        <%= button_to 'Dashbord', dailynews_index_path(@news), method: :get %>  
+        <div class="text-center">
+          <%= link_to '[Home page]', dailynews_index_path(@all_news), class: "fs-4 text-success" %>
+        </div>
       </div>
     </div>
   </div>
-</div>

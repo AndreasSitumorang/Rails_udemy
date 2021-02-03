@@ -33,7 +33,7 @@
                   <h5 class="fs-2 text-success"><%= news.headline %></h5>
                   <p class="fs-4"><%= truncate(news.information, length:100) %></p>
 
-                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <div class="btn-group gap-1" role="group" aria-label="Basic outlined example">
                       <%= button_to 'Show', dailynews_path(news), class: "btn btn-primary", method: :get, data: { confirm: 'Are you sure?' } %>
                       <%= button_to 'Edit', edit_dailynews_path(news), class: "btn btn-secondary", method: :get %>
                       <%= button_to 'Delete', dailynews_path(news), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?"} %>
