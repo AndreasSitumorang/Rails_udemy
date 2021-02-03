@@ -15,29 +15,38 @@
 
 </head> 
 
+    <div id="page-content">
+      <div class="container">
+        <h1 class="text-center mt-4">Edit the News</h1>
+          <%= render 'shared/errors' %>
 
-<div id="page-content">
-    <h1>Edit News</h1>
-      <% if @news.errors.any? %>
-          <h2>The following errors prevented the article from being saved</h2>
-          <ul>
-            <% @news.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
+        <div class="d-flex justify-content-center">
+          <div class="col-10">    
+            <%= form_with(model: @news, url: dailynews_path(@news.id), class: "shadow p-3 mb-5 bg-dark rounded", method: "patch", local: true) do |f| %>
+              <div class="mb-3">
+                <p> 
+                  <%= f.label :headline, class: "text-light col-2 col-form-label" %>
+                  <div class="col-10"> 
+                    <%= f.text_field :headline, class: "form-control" %>
+                  </div>
+                </p>
+              </div>
+              <div class="mb-3">
+                <p>
+                  <%= f.label :information, class: "text-light col-2 col-form-label" %>
+                  <div class="col-10"> 
+                    <%= f.text_area :information, rows:10, class: "form-control" %>
+                  </div> 
+                </p>
+                <p>
+                  <%= f.submit "Edit News", class: "btn btn-outline-light btn-lg" %> 
+                </p>
+              </div>        
             <% end %>
-          </ul>
-        <% end %>
-        
-    <%= form_with(model: @news, url: dailynews_path(@news.id), method: "patch", local: true) do |f| %>
-      <p> 
-        <%= f.label :headline %><br/> 
-        <%= f.text_field :headline %>
-      </p>
-      <p>
-        <%= f.label :information %><br/> 
-        <%= f.text_area :information %> 
-      </p>
-      <p>
-        <%= f.submit "Edit News" %> 
-      </p>        
-    <% end %>
-</div>
+          </div>
+        </div>
+        <div class="text-center">
+          <%= link_to '[Cancel the News]', dailynews_index_path(@all_news), class: "fs-4 text-success" %>
+        </div>
+      </div>
+    </div>

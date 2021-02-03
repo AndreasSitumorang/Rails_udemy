@@ -1,18 +1,35 @@
-<div class="body-wrap boxed-container">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ruby Udemy Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Heebo:400,500,700|Playfair+Display:700" rel="stylesheet">
+  <link rel="stylesheet" href="dist/css/style.css">
+  <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <h1 style="text-align:center" ><strong><%= @news.headline %> </strong> </h2>
+</head> 
 
-  <h3 style="text-align:center"><strong><%= @news.information %></strong> </h3>
+<div id="page-content">
+  <div class="container">
+    <div class="body-wrap boxed-container">
+
+      <h1 style="text-align:center" ><strong><%= @news.headline %> </strong> </h1>
+
+      <h3 style="text-align:center"><strong><%= @news.information %></strong> </h3>
 
 
-  
-  <div class="hero-cta">
-    <%= button_to 'Edit', edit_dailynews_path(@news), method: :get %>
-    <%= button_to 'Delete', dailynews_path(@news), method: :delete %>
-    <%= button_to 'Dashbord', dailynews_index_path(@news), method: :get %>  
+      
+      <div class="hero-cta">
+        <%= button_to 'Edit', edit_dailynews_path(@news), method: :get %>
+        <%= button_to 'Delete', dailynews_path(@news), method: :delete %>
+        <%= button_to 'Dashbord', dailynews_index_path(@news), method: :get %>  
+      </div>
+    </div>
   </div>
-
-
 </div>
-
-<%= render 'footer' %>
