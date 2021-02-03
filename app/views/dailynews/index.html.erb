@@ -22,7 +22,7 @@
       <h1 style="text-align:left" class="mt-4">List of News</h1>
 
       <% @all_news.each do |news| %>
-        <div class="row justify-content-md-center" >
+        <div class="row justify-content-md-center">
           <div class="col-8">
             <div class="shadow p-3 mb-5 bg-white rounded">
               <div class="card">
@@ -32,17 +32,24 @@
                 <div class="card-body">
                   <h5 class="fs-2 text-success"><%= news.headline %></h5>
                   <p class="fs-4"><%= truncate(news.information, length:100) %></p>
-                  <a href="#" class="btn btn-primary">Show</a>
-                  <a href="#" class="btn btn-secondary">Edit</a> 
-                  <a href="#" class="btn btn-danger">Delete</a> 
-                  <div class="card-footer text-muted">
-                    <small>Create at <%= time_ago_in_words(news.created_at) %> and  Edit at <%= time_ago_in_words(news.updated_at) %></small>
-                  </div> 
+
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                      <%= button_to 'Show', dailynews_path(news), class: "btn btn-primary", method: :get, data: { confirm: 'Are you sure?' } %>
+                      <%= button_to 'Edit', edit_dailynews_path(news), class: "btn btn-secondary", method: :get %>
+                      <%= button_to 'Delete', dailynews_path(news), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?"} %>
+                    </div>
+                    
+                </div>
+                <div class="card-footer text-muted">
+                    <small> 
+                      Create at <%= time_ago_in_words(news.created_at) %> and Edit at
+                      <%= time_ago_in_words(news.updated_at) %></small>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
       <% end %> 
 
         <table class="table table-sm">
