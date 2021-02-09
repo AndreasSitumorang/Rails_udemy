@@ -24,7 +24,7 @@
             <div class="shadow p-3 mb-5 bg-white rounded">
               <div class="card">
                 <div class="card-header">
-                  <p class="fst-italic text-muted">Current User</p>
+                  <p class="fst-italic text-muted"><%= @news.user.username if @news.user %></p>
                 </div>
                 <div class="card-body">
                   <h5 class="fs-2 text-success"><%= @news.headline %></h5>
