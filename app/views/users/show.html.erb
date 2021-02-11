@@ -16,11 +16,14 @@
 </head> 
 
 
-  <div id="page-content">
-    <div class="body-wrap boxed-container">
-      <div class="container">
-        <h1 style="text-align:left" class="mt-4">List of News</h1>
-      </div>
-      <%= render 'news' %>
+<div id="page-content">
+  <div class="body-wrap boxed-container">
+    <div class="container">
+      <h1 class="text-center mt-4"><%= @user.username %>'s profile</h1>
+
+      <%= gravatar_for @user, size: 200 %>
+      <h2 class="text-center mt-4">All your news</h2>
+      <%= render "dailynews/news" %>
     </div>
   </div>
+</div>

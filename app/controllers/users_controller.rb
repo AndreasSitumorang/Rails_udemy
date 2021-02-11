@@ -8,6 +8,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def show
+    @user = User.find(params[:id])
+    @all_news = @user.news
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
