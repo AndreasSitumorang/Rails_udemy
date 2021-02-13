@@ -22,8 +22,27 @@
       <h1 class="text-center mt-4"><%= @user.username %>'s profile</h1>
 
       <%= gravatar_for @user, size: 200 %>
+      <div class="text-center mt-4">
+        <%= link_to "edit your profile", edit_user_path(@user), class: "btn btn-outline-info" %>
+      </div>
       <h2 class="text-center mt-4">All your news</h2>
+
+      <div class="apple_pagination">
+        <div class="page_info">
+          <%= page_entries_info @all_news %>
+        </div>
+        <%= will_paginate @all_news, :container => false %>
+      </div>
+
       <%= render "dailynews/news" %>
+
+      <div class="apple_pagination">
+        <div class="page_info">
+          <%= page_entries_info @all_news %>
+        </div>
+        <%= will_paginate @all_news, :container => false %>
+      </div>
+      
     </div>
   </div>
 </div>

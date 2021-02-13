@@ -10,7 +10,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @all_news = @user.news
+    @all_news = @user.news.paginate(page: params[:page], per_page: 7)
+  end
+
+  def index
+    @users = User.paginate(page: params[:page], per_page: 4)
   end
 
   def update
