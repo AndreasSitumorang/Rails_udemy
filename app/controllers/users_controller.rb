@@ -1,15 +1,17 @@
 class UsersController < ApplicationController
 
+  before_action :set_user, only: [:show, :edit, :update]
+  
   def new
     @user = User.new
   end
 
   def edit
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
     @all_news = @user.news.paginate(page: params[:page], per_page: 7)
   end
 
@@ -18,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "Hallo #{@user.username} your account has been updated"
       redirect_to dailynews_index_path
@@ -31,6 +33,7 @@ class UsersController < ApplicationController
     # byebug
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = "Hallo #{@user.username} wellcome to the team, you can expres your self"
       redirect_to dailynews_index_path
     else
@@ -39,7 +42,13 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
 end
