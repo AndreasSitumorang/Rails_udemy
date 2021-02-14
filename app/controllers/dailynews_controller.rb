@@ -22,7 +22,7 @@ class DailynewsController < ApplicationController
 
   def create
     @news = News.new(news_params)
-    @news.user = User.first
+    @news.user = current_user
     # render plain: @news_add.inspect
     if @news.save
       flash[:notice] = "Berita telah di buat" 
