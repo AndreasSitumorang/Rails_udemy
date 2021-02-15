@@ -15,8 +15,10 @@
 
                     <div class="btn-group gap-1" role="group" aria-label="Basic outlined example">
                       <%= button_to 'Show', dailynews_path(news), class: "btn btn-primary", method: :get, data: { confirm: 'Are you sure?' } %>
-                      <%= button_to 'Edit', edit_dailynews_path(news), class: "btn btn-secondary", method: :get %>
-                      <%= button_to 'Delete', dailynews_path(news), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?"} %>
+                      <% if logged_in? && news.user == current_user %>
+                        <%= button_to 'Edit', edit_dailynews_path(news), class: "btn btn-secondary", method: :get %>
+                        <%= button_to 'Delete', dailynews_path(news), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?"} %>
+                      <% end %>
                     </div>
 
                 </div>

@@ -1,5 +1,7 @@
 class DailynewsController < ApplicationController
   before_action :private_method, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:show, :index]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def show
     # byebug
@@ -64,5 +66,11 @@ class DailynewsController < ApplicationController
     params.require(:news).permit(:headline, :information)
   end
 
+  def require_same_user
+    if current_user != @news.user
+      flash[:alert] = "You can only edit or delete your own news"
+      redirect_to dailynews_path
+    end
+  end
 
 end
