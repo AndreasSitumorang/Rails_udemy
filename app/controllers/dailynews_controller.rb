@@ -67,7 +67,7 @@ class DailynewsController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @news.user
+    if current_user != @news.user && !current_user.admin?
       flash[:alert] = "You can only edit or delete your own news"
       redirect_to dailynews_path
     end

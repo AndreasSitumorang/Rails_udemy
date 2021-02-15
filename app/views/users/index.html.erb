@@ -41,10 +41,31 @@
               <%= link_to gravatar_for(user, size: 150), user %>
             </h5>
             <p class="card-text"><%= pluralize(user.news.count, "News") %></p>
-            <%= link_to "View profile", user, class: "btn btn-outline-success" %>
-            <% if logged_in? and user == current_user %>
-              <%= link_to "Edit profile", edit_user_path(user), class: "btn btn-outline-info" %>
+            <div class="row">
+              <div class="col-1">
+              </div>
+              <div class="col-sm">
+              </div>  
+              <div class="col-sm">
+                <%= link_to "View profile", user, class: "btn btn-outline-success" %>
+              </div>            
+            <% if logged_in? %>
+              <% if user == current_user %>
+                <div class="col-sm">
+                  <%= link_to "Edit profile", edit_user_path(user), class: "btn btn-outline-info" %>
+                </div>
+              <% end %>
+              <% if current_user.admin? %>
+              <div class="col-sm">
+                <%= button_to "Delete user", user_path(user), class: "btn btn-outline-danger", method: :delete, data: { confirm: "Are you sure?"} %>
+              </div>
+              <% end %>               
             <% end %>
+              <div class="col-sm">
+              </div>
+              <div class="col-1">
+              </div>
+            </div>
           </div>
           <div class="card-footer text-muted">
             <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>

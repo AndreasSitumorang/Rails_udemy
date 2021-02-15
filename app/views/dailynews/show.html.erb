@@ -31,7 +31,7 @@
                   <p class="fs-4"><%= simple_format(@news.information, length:100) %></p>
 
                     <div class="btn-group gap-1" role="group" aria-label="Basic outlined example">
-                      <% if logged_in? && @news.user == current_user %>
+                      <% if logged_in? && (@news.user == current_user || current_user.admin?) %>
                         <%= button_to 'Edit', edit_dailynews_path(@news), class: "btn btn-outline-info", method: :get %>
                         <%= button_to 'Delete', dailynews_path(@news), class: "btn btn-outline-dark", method: :delete, data: { confirm: "Are you sure?"} %>
                       <% end %>
